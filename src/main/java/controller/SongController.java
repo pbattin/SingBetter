@@ -135,8 +135,11 @@ public class SongController {
 
     @RequestMapping(value = "/test", method = RequestMethod.GET, produces = {"application/json"})
     @ResponseBody Song test(){
-        Song s = songDOA.findByid(2);
-        return s;
+        Song x = null;
+        for(Song s: songDOA.findAll()){
+            x = s;
+        }
+        return x;
     }
 
 
