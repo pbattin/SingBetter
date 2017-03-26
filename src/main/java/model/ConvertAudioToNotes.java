@@ -205,7 +205,7 @@ public class ConvertAudioToNotes {
 
         public static void main(String[] args) throws UnsupportedAudioFileException, IOException {
 
-            new ConvertAudioToNotes().run(new File("/Users/prestonbattin/Desktop/SingBetter Songs/Dio - Holy Diver (Vocals Only) Studio Version.1Dio - Holy Diver 30sec.wav"));
+            new ConvertAudioToNotes().run(new File("/Users/prestonbattin/Desktop/SingBetter Songs/Jackson 5 - ABC (vocals only) -- Michael Jackson at age 11!.1Jackson 5 - ABC Vocals only 40sec.wav"));
         }
 
 }
