@@ -148,7 +148,7 @@ public class SongController {
         return x;
     }
 
-    @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
+    @RequestMapping(value = "/uploadFile", method = RequestMethod.POST, consumes = {"multipart/form-data"})
     public @ResponseBody
     String uploadFileHandler(@RequestParam("file") MultipartFile file) throws IOException, UnsupportedAudioFileException {
 
