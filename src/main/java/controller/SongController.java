@@ -121,10 +121,10 @@ public class SongController {
     }
 
     @RequestMapping(value = "/getNotes", method = RequestMethod.POST, produces = {"application/json"})
-    @ResponseBody String[] getNotes(@RequestBody String title){
+    @ResponseBody String[] getNotes(@RequestBody int id){
 
         try{
-           Song song = songDOA.findBytitle(title);
+           Song song = songDOA.findByid(id);
            return song.getNotes();
         }
         catch(Exception e){
