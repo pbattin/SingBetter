@@ -150,7 +150,7 @@ public class SongController {
 
     @RequestMapping(value = "/uploadFile", method = RequestMethod.POST, consumes = {"multipart/form-data"})
     public @ResponseBody
-    ArrayList<String > uploadFileHandler( MultipartFile file) throws IOException, UnsupportedAudioFileException {
+    ArrayList<String > uploadFileHandler(@RequestParam("file") MultipartFile file) throws IOException, UnsupportedAudioFileException {
 
         File convFile = new File(file.getOriginalFilename());
             convFile.createNewFile();
