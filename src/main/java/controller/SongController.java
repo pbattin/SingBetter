@@ -157,8 +157,8 @@ public class SongController {
             FileOutputStream fos = new FileOutputStream(convFile);
             fos.write(file.getBytes());
             fos.close();
-        new ConvertAudioToNotes().run(convFile);
-        return "Complete";
+
+        return new ConvertAudioToNotes().run(convFile);
 
     }
 

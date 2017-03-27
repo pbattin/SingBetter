@@ -17,6 +17,7 @@ import java.util.List;
  */
 public class ConvertAudioToNotes {
     List<String> notes = new ArrayList<>();
+    String convertedNotesFromHttp = "";
         // taken from http://www.cs.princeton.edu/introcs/97data/FFT.java.html
         // (first hit in Google for "java fft"
         // needs Complex class from http://www.cs.princeton.edu/introcs/97data/Complex.java
@@ -142,7 +143,7 @@ public class ConvertAudioToNotes {
             }
         }
 
-        public void run (File file) throws UnsupportedAudioFileException, IOException {
+        public String run (File file) throws UnsupportedAudioFileException, IOException {
             FrequencyNoteMapper mapper = new FrequencyNoteMapper();
 
             // size of window for FFT
@@ -177,7 +178,7 @@ public class ConvertAudioToNotes {
                 double windowEnd = (offset+(N-overlap))/rate;
 
 
-
+                convertedNotesFromHttp += mapper.findMatch(peakFrequency);
                 System.out.printf("%f s to %f s:\t%f Hz -- %s\n", windowBegin, windowEnd, peakFrequency, mapper.findMatch(peakFrequency), notes.add(mapper.findMatch(peakFrequency)));
             }
             BufferedWriter writer = null;
@@ -201,11 +202,13 @@ public class ConvertAudioToNotes {
                 {
                 }
             }
+            return convertedNotesFromHttp;
         }
 
         public static void main(String[] args) throws UnsupportedAudioFileException, IOException {
 
-            new ConvertAudioToNotes().run(new File("/Users/prestonbattin/Desktop/SingBetter Songs/Jackson 5 - ABC (vocals only) -- Michael Jackson at age 11!.1Jackson 5 - ABC Vocals only 40sec.wav"));
+           String x = new ConvertAudioToNotes().run(new File("/Users/prestonbattin/Desktop/SingBetter Songs/Jackson 5 - ABC (vocals only) -- Michael Jackson at age 11!.1Jackson 5 - ABC Vocals only 40sec.wav"));
+
         }
 
 }
