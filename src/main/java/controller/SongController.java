@@ -1,8 +1,14 @@
 package controller;
 
+import model.ConvertAudioToNotes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -142,6 +148,19 @@ public class SongController {
         return x;
     }
 
+    @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
+    public @ResponseBody
+    String uploadFileHandler(@RequestParam("file") MultipartFile file) throws IOException, UnsupportedAudioFileException {
+
+        File convFile = new File(file.getOriginalFilename());
+            convFile.createNewFile();
+            FileOutputStream fos = new FileOutputStream(convFile);
+            fos.write(file.getBytes());
+            fos.close();
+        new ConvertAudioToNotes().run(convFile);
+        return "Complete";
+
+    }
 
     @Autowired
     SongDOA songDOA;
