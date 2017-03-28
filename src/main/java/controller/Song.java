@@ -62,7 +62,7 @@ public class Song {
     public double compareNotes(ArrayList<String> sungNotes){
       String[]  sungNotesArray = new String[sungNotes.size()];
       sungNotesArray = sungNotes.toArray(sungNotesArray);
-      int count = 0;
+      double count = 0;
 
       if(this.getNotes().length > sungNotesArray.length){
 
@@ -94,7 +94,9 @@ public class Song {
 
 
           }
-          return (count / this.getNotes().length) * 100;
+
+          double percentage = ((count / getNotes().length) * 100);
+          return Math.ceil(percentage);
     }
 
     public boolean accuracyDetector(String notes){

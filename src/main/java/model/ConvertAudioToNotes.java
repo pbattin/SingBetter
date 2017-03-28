@@ -207,10 +207,10 @@ public class ConvertAudioToNotes {
             return convertedNotesFromHttp;
         }
 
-//        public static void main(String[] args) throws UnsupportedAudioFileException, IOException {
-//
-//           List x = new ConvertAudioToNotes().run(new File("/Users/prestonbattin/Desktop/SingBetter Songs/Jackson 5 - ABC (vocals only) -- Michael Jackson at age 11!.1Jackson 5 - ABC Vocals only 40sec.wav"));
-//            System.out.println(x);
-//        }
+        public static void main(String[] args) throws UnsupportedAudioFileException, IOException {
+
+           List x = new ConvertAudioToNotes().run(new File("/Users/prestonbattin/Desktop/Audio 1gnote.wav"));
+            System.out.println(x);
+        }
 
 }
