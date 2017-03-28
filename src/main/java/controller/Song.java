@@ -60,17 +60,18 @@ public class Song {
       String[]  sungNotesArray = new String[sungNotes.size()];
       sungNotesArray = sungNotes.toArray(sungNotesArray);
       int count = 0;
-
+        System.out.println(this.getNotes().length);
       if(this.getNotes().length > sungNotesArray.length){
           for(int i = 0; i < sungNotesArray.length; i++){
-              if(this.getNotes()[i] == sungNotesArray[i])
+              if(this.getNotes()[i].equals(sungNotesArray[i]))
                   count++;
           }
       }
       else
           for(int i = 0; i < this.getNotes().length; i++){
-          if(this.getNotes()[i] == sungNotesArray[i])
+          if(this.getNotes()[i].equals(sungNotesArray[i])) {
               count++;
+          }
           }
           return (count / this.getNotes().length) * 100;
     }
