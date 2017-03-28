@@ -68,19 +68,20 @@ public class Song {
 
           for(int i = 0; i < sungNotesArray.length; i++){
 
-              if(accuracyDetector(this.getNotes()[i].substring(0,1)))
-                  if(this.getNotes()[i].substring(0,1).equals(sungNotesArray[i].substring(0,1)))
+              if(accuracyDetector(this.getNotes()[i].substring(0,2))) {
+                  if (this.getNotes()[i].substring(0, 2).equals(sungNotesArray[i].substring(0, 2)))
                       count++;
+              }
 
               else
-                  if(this.getNotes()[i].substring(0,0).equals(sungNotesArray[i].substring(0,0)))
+                  if(this.getNotes()[i].substring(0,1).equals(sungNotesArray[i].substring(0,1)))
                       count++;
           }
       }
       else
           for(int i = 0; i < this.getNotes().length; i++){
 
-              if(accuracyDetector(this.getNotes()[i].substring(0,1))) {
+              if(accuracyDetector(this.getNotes()[i].substring(0,2))) {
                   if (this.getNotes()[i].substring(0, 2).equals(sungNotesArray[i].substring(0, 2)))
                       count++;
               }

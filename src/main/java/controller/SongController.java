@@ -129,28 +129,6 @@ public class SongController {
         songDOA.save(Jackson5);
     }
 
-    @RequestMapping(value = "/getNotes", method = RequestMethod.POST, produces = {"application/json"})
-    @ResponseBody String[] getNotes(@RequestBody int id){
-
-        try{
-           Song song = songDOA.findByid(id);
-           return song.getNotes();
-        }
-        catch(Exception e){
-             String[] s = {"No", "Songs"};
-             return s;
-        }
-    }
-
-    @RequestMapping(value = "/test", method = RequestMethod.GET, produces = {"application/json"})
-    @ResponseBody Song test(){
-        Song x = null;
-        for(Song s: songDOA.findAll()){
-            x = s;
-        }
-        return x;
-    }
-
     @RequestMapping(value = "/holyDiver", method = RequestMethod.POST, consumes = {"multipart/form-data"})
     public @ResponseBody
     double dioAccuracy(@RequestParam("file") MultipartFile file) throws IOException, UnsupportedAudioFileException {
