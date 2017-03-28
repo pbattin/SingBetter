@@ -2,6 +2,7 @@ package controller;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 
 /**
  * Created by prestonbattin on 3/23/17.
@@ -53,5 +54,24 @@ public class Song {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public double compareNotes(ArrayList<String> sungNotes){
+      String[]  sungNotesArray = new String[sungNotes.size()];
+      sungNotesArray = sungNotes.toArray(sungNotesArray);
+      int count = 0;
+
+      if(this.getNotes().length > sungNotesArray.length){
+          for(int i = 0; i < sungNotesArray.length; i++){
+              if(this.getNotes()[i] == sungNotesArray[i])
+                  count++;
+          }
+      }
+      else
+          for(int i = 0; i < this.getNotes().length; i++){
+          if(this.getNotes()[i] == sungNotesArray[i])
+              count++;
+          }
+          return (count / this.getNotes().length) * 100;
     }
 }

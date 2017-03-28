@@ -148,17 +148,19 @@ public class SongController {
         return x;
     }
 
-    @RequestMapping(value = "/uploadFile", method = RequestMethod.POST, consumes = {"multipart/form-data"})
+    @RequestMapping(value = "/holyDiver", method = RequestMethod.POST, consumes = {"multipart/form-data"})
     public @ResponseBody
-    ArrayList<String > uploadFileHandler(@RequestParam("file") MultipartFile file) throws IOException, UnsupportedAudioFileException {
+    double uploadFileHandler(@RequestParam("file") MultipartFile file) throws IOException, UnsupportedAudioFileException {
 
         File convFile = new File(file.getOriginalFilename());
             convFile.createNewFile();
             FileOutputStream fos = new FileOutputStream(convFile);
             fos.write(file.getBytes());
             fos.close();
-
-        return new ConvertAudioToNotes().run(convFile);
+        Song dio = songDOA.findByid(1);
+        String[] dioNotes =  dio.getNotes();
+        ArrayList<String> sungNotes =  new  ConvertAudioToNotes().run(convFile);
+      return  dio.compareNotes(sungNotes);
 
     }
 
