@@ -153,7 +153,7 @@ public class SongController {
 
     @RequestMapping(value = "/holyDiver", method = RequestMethod.POST, consumes = {"multipart/form-data"})
     public @ResponseBody
-    double uploadFileHandler(@RequestParam("file") MultipartFile file) throws IOException, UnsupportedAudioFileException {
+    double dioAccuracy(@RequestParam("file") MultipartFile file) throws IOException, UnsupportedAudioFileException {
 
         File convFile = new File(file.getOriginalFilename());
             convFile.createNewFile();
@@ -167,6 +167,41 @@ public class SongController {
         return  dio.compareNotes(sungNotes);
 
     }
+
+    @RequestMapping(value = "/teenSpirit", method = RequestMethod.POST, consumes = {"multipart/form-data"})
+    public @ResponseBody
+    double nirvanaAccuracy(@RequestParam("file") MultipartFile file) throws IOException, UnsupportedAudioFileException {
+
+        File convFile = new File(file.getOriginalFilename());
+        convFile.createNewFile();
+        FileOutputStream fos = new FileOutputStream(convFile);
+        fos.write(file.getBytes());
+        fos.close();
+
+        Song teenSpirit = songDOA.findByid(2);
+        ArrayList<String> sungNotes =  new  ConvertAudioToNotes().run(convFile);
+
+        return  teenSpirit.compareNotes(sungNotes);
+
+    }
+
+    @RequestMapping(value = "/abc", method = RequestMethod.POST, consumes = {"multipart/form-data"})
+    public @ResponseBody
+    double jackson5Accuracy(@RequestParam("file") MultipartFile file) throws IOException, UnsupportedAudioFileException {
+
+        File convFile = new File(file.getOriginalFilename());
+        convFile.createNewFile();
+        FileOutputStream fos = new FileOutputStream(convFile);
+        fos.write(file.getBytes());
+        fos.close();
+
+        Song abc = songDOA.findByid(3);
+        ArrayList<String> sungNotes =  new  ConvertAudioToNotes().run(convFile);
+
+        return  abc.compareNotes(sungNotes);
+
+    }
+
 
     @Autowired
     SongDOA songDOA;
