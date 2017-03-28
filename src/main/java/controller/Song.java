@@ -81,13 +81,15 @@ public class Song {
           for(int i = 0; i < this.getNotes().length; i++){
 
               if(accuracyDetector(this.getNotes()[i].substring(0,1))) {
-                  if (this.getNotes()[i].substring(0, 1).equals(sungNotesArray[i].substring(0, 1)))
+                  if (this.getNotes()[i].substring(0, 2).equals(sungNotesArray[i].substring(0, 2)))
                       count++;
               }
 
-                  else
-                  if(this.getNotes()[i].substring(0,0).equals(sungNotesArray[i].substring(0,0)))
+                  else {
+                  if (this.getNotes()[i].substring(0, 1).equals(sungNotesArray[i].substring(0, 1))) {
                       count++;
+                  }
+              }
 
 
           }
@@ -96,8 +98,8 @@ public class Song {
 
     public boolean accuracyDetector(String notes){
 
-        if(notes.equals(B_FLAT) || notes.equals(C_SHARP) || notes.equals(D_SHARP) ||
-                notes.equals(F_SHARP) || notes.equals(G_SHARP)){
+        if(notes.equals(B_FLAT.toString()) || notes.equals(C_SHARP.toString()) || notes.equals(D_SHARP.toString()) ||
+                notes.equals(F_SHARP.toString()) || notes.equals(G_SHARP.toString())){
             return true;
         }
         return false;
