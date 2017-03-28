@@ -160,7 +160,11 @@ public class SongController {
         Song dio = songDOA.findByid(1);
         String[] dioNotes =  dio.getNotes();
         ArrayList<String> sungNotes =  new  ConvertAudioToNotes().run(convFile);
-      return  dio.compareNotes(sungNotes);
+
+
+        ArrayList x = new ConvertAudioToNotes().run(new File("/Users/prestonbattin/Desktop/SingBetter Songs/Dio - Holy Diver (Vocals Only) Studio Version.1Dio - Holy Diver 30sec.wav"));
+
+        return  dio.compareNotes(x);
 
     }
 
