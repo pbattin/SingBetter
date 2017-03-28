@@ -33,9 +33,9 @@ public class SongTest {
     @Test
     public void compareNotesTest(){
 
-        String[] notes = {"A", "Bb", "C#"};
+        String[] notes = {"A0", "Bb", "C#"};
         ArrayList<String> testNotes = new ArrayList<>();
-        testNotes.add("A");
+        testNotes.add("A0");
         testNotes.add("Bb");
         testNotes.add("C#");
         song.setNotes(notes);
