@@ -4,9 +4,12 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 
+import static model.Notes.*;
+
 /**
  * Created by prestonbattin on 3/23/17.
  */
+@SuppressWarnings("Duplicates")
 @Entity
 @Table(name = "Songs")
 public class Song {
@@ -60,19 +63,44 @@ public class Song {
       String[]  sungNotesArray = new String[sungNotes.size()];
       sungNotesArray = sungNotes.toArray(sungNotesArray);
       int count = 0;
-        System.out.println(this.getNotes().length);
+
       if(this.getNotes().length > sungNotesArray.length){
+
           for(int i = 0; i < sungNotesArray.length; i++){
-              if(this.getNotes()[i].equals(sungNotesArray[i]))
-                  count++;
+
+              if(accuracyDetector(this.getNotes()[i].substring(0,1)))
+                  if(this.getNotes()[i].substring(0,1).equals(sungNotesArray[i].substring(0,1)))
+                      count++;
+
+              else
+                  if(this.getNotes()[i].substring(0,0).equals(sungNotesArray[i].substring(0,0)))
+                      count++;
           }
       }
       else
           for(int i = 0; i < this.getNotes().length; i++){
-          if(this.getNotes()[i].equals(sungNotesArray[i])) {
-              count++;
-          }
+
+              if(accuracyDetector(this.getNotes()[i].substring(0,1))) {
+                  if (this.getNotes()[i].substring(0, 1).equals(sungNotesArray[i].substring(0, 1)))
+                      count++;
+              }
+
+                  else
+                  if(this.getNotes()[i].substring(0,0).equals(sungNotesArray[i].substring(0,0)))
+                      count++;
+
+
           }
           return (count / this.getNotes().length) * 100;
+    }
+
+    public boolean accuracyDetector(String notes){
+
+        if(notes.equals(B_FLAT) || notes.equals(C_SHARP) || notes.equals(D_SHARP) ||
+                notes.equals(F_SHARP) || notes.equals(G_SHARP)){
+            return true;
+        }
+        return false;
+
     }
 }

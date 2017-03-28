@@ -160,8 +160,8 @@ public class SongController {
             FileOutputStream fos = new FileOutputStream(convFile);
             fos.write(file.getBytes());
             fos.close();
+
         Song dio = songDOA.findByid(1);
-        String[] dioNotes =  dio.getNotes();
         ArrayList<String> sungNotes =  new  ConvertAudioToNotes().run(convFile);
 
         return  dio.compareNotes(sungNotes);
