@@ -44,6 +44,18 @@ public class SongTest {
         double actual = song.compareNotes(testNotes);
         Assert.assertEquals("Testing that the notes are equal", expected, actual, 0);
 
+        String[] moreNotes = {"A1", "Bb", "G#", "C2"};
+        testNotes.clear();
+        testNotes.add("A1");
+        testNotes.add("Bb");
+        testNotes.add("G2");
+        testNotes.add("Bb");
+
+        song.setNotes(moreNotes);
+        expected = 50;
+        actual  = song.compareNotes(testNotes);
+        Assert.assertEquals("Testing the accuracy", expected, actual, 0);
+
 
 
 

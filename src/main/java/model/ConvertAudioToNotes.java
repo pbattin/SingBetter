@@ -4,7 +4,9 @@ import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -177,40 +179,38 @@ public class ConvertAudioToNotes {
 
 
                 convertedNotesFromHttp.add(mapper.findMatch(peakFrequency));
-             //   System.out.printf("%f s to %f s:\t%f Hz -- %s\n", windowBegin, windowEnd, peakFrequency, mapper.findMatch(peakFrequency),notes.add(mapper.findMatch(peakFrequency)));
+                System.out.printf("%f s to %f s:\t%f Hz -- %s\n", windowBegin, windowEnd, peakFrequency, mapper.findMatch(peakFrequency),notes.add(mapper.findMatch(peakFrequency)));
             }
 
             /**
              * This is so I can add the notes from a converted song to a file so I can easily add them to my database
              */
-//            BufferedWriter writer = null;
-//            try
-//            {
-//                writer = new BufferedWriter( new FileWriter("/Users/prestonbattin/Desktop/SingBetter Songs/Jackson5.txt"));
-//                writer.write(notes.toArray().toString());
-//
-//            }
-//            catch ( IOException e)
-//            {
-//            }
-//            finally
-//            {
-//                try
-//                {
-//                    if ( writer != null)
-//                        writer.close( );
-//                }
-//                catch ( IOException e)
-//                {
-//                }
-//            }
+            BufferedWriter writer = null;
+            try
+            {
+                writer = new BufferedWriter( new FileWriter("/Users/prestonbattin/Desktop/SingBetter Songs/Jackson5.txt"));
+                writer.write(notes.toString());
+
+            }
+            catch ( IOException e)
+            {
+            }
+            finally
+            {
+                try
+                {
+                    if ( writer != null)
+                        writer.close( );
+                }
+                catch ( IOException e)
+                {
+                }
+            }
             return convertedNotesFromHttp;
         }
 
-        public static void main(String[] args) throws UnsupportedAudioFileException, IOException {
+    public static void main(String[] args) throws UnsupportedAudioFileException, IOException{
 
-           List x = new ConvertAudioToNotes().run(new File("/Users/prestonbattin/Desktop/Audio 1gnote.wav"));
-            System.out.println(x);
-        }
-
+            new ConvertAudioToNotes().run(new File("/Users/prestonbattin/Desktop/Audio 1gnote.wav"));
+    }
 }

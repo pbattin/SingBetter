@@ -29,6 +29,25 @@ public class SongController {
         return songs;
     }
 
+    @RequestMapping(value = "/addTest", method = RequestMethod.PUT)
+    void addTest(){
+        String rawNotes = "G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, " +
+                "G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, " +
+                "G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1," +
+                " G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1," +
+                " G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1," +
+                " G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1," +
+                " G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1," +
+                " G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1, G1";
+
+        String[] testNotes = rawNotes.split(", ");
+        Song test = new Song();
+        test.setTitle("Sample G Note");
+        test.setArtist("Preston Battin");
+        test.setNotes(testNotes);
+        songDOA.save(test);
+    }
+
     @RequestMapping(value = "/addDio", method = RequestMethod.PUT)
     void addSongDio(){
         String rawNotes = "none, none, C2, B2, F1, F#1, G0, G0, G0, C3, none, F#1, F#2, E2, C#2, C#3, E3, D#3, G#1, D#2," +
