@@ -108,4 +108,27 @@ public class Song {
         return false;
 
     }
+
+    static String scoreConverter(double accuracy){
+
+        if(accuracy >= 55)
+            return "A+!, You're Excellent! \uD83E\uDD19";
+        else if(accuracy >= 50)
+            return "A!, Nice Job! \uD83D\uDC4D";
+        else if(accuracy >= 45)
+            return "B+!, Sweet! \uD83D\uDE00";
+        else if(accuracy >= 40)
+            return "B!, Pretty Good! \uD83D\uDE0F";
+        else if(accuracy >= 35)
+            return "C+!, Getting There! \uD83D\uDE1A";
+        else if(accuracy >= 30)
+            return "C!,  Room for improvement! \uD83D\uDE42";
+        else if(accuracy >= 25)
+            return "D+!, Lets Practice More! \uD83E\uDD13";
+        else if(accuracy >= 20)
+            return "D!, Keep Trying! \uD83D\uDE4C";
+        else
+            return "F!!!!, Were You Even Trying? \uD83D\uDE05";
+
+    }
 }

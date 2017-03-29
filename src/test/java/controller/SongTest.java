@@ -56,8 +56,17 @@ public class SongTest {
         actual  = song.compareNotes(testNotes);
         Assert.assertEquals("Testing the accuracy", expected, actual, 0);
 
+    }
 
+    @Test
+    public void scoreConverterTest(){
 
+        String expected = "F!!!!, Were You Even Trying? \uD83D\uDE05";
+        String actual = song.scoreConverter(1);
+        Assert.assertEquals("Testing the score converts the percentage to a Letter", expected, actual);
 
+        expected = "C!,  Room for improvement! \uD83D\uDE42";
+        actual = song.scoreConverter(32);
+        Assert.assertEquals("Testing the output for the converted score", expected, actual);
     }
 }
