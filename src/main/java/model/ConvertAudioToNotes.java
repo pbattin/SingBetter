@@ -211,6 +211,6 @@ public class ConvertAudioToNotes {
 
     public static void main(String[] args) throws UnsupportedAudioFileException, IOException{
 
-            new ConvertAudioToNotes().run(new File("/Users/prestonbattin/Desktop/Audio 1gnote.wav"));
+            new ConvertAudioToNotes().run(new File("/Users/prestonbattin/Desktop/Audio 1gnote2 sec g note test.wav"));
     }
 }
